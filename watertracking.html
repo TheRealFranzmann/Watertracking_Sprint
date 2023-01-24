@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+	<meta charset="utf-8">
+    <meta name="description" content="Author: Harald Mandl, Form, Watertracking">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>Watertracking</title>
+    </head>
+    <body>
+        <header>
+            <h1>Heute schon Wasser getrunken?</h1>
+        </header>
+        <main>
+            <p>Erfasse und analysiere dein Trinkverhalten mit der <b>Wasser Trinken WebApp.</b></p>
+            <br />
+            <form>
+                <label>Was hast du getrunken?
+                    <input type="text" name="liquid-choice" list="liquid" />
+                    <datalist id="liquid">
+                        <option>Kaffee</option>
+                        <option>Wasser</option>
+                        <option>Apfelsaft</option>
+                    </datalist>
+                </label>
+                <br />
+                <label>Welche Menge hast du getrunken?</label>
+                <br />
+                <label>
+                    <input type="radio" name="amount" value="300" />
+                    Glas 300ml
+                </label>
+                <br />
+                <label>
+                    <input type="radio" name="amount" value="500" />
+                    Krug 500ml
+                </label>
+                <br />
+                <label>Wie oft hast du die ausgewählte Menge getrunken (zwischen 1x bis 5x):
+                    <input id="times" type="number" value="1" name="quantity" min="1" max="5"/>
+                </label>
+                <br />
+                <input value="Harald" name="firstname" hidden />
+                <input value="Mandl" name="lastname" hidden />
+                <input value="" name="submit" hidden />
+                <button id="saveWaterAmount" type="button">Speichern</button>
+                <button type="reset">zurücksetzen</button>
+            </form>
+            <div>
+                <label>Aktuelle Tagesmenge:
+                    <meter id="measure-water" value="0" min="0" max="4"></meter>
+                </label>
+                <p>Insgesamt getrunken: <span id="water-amount">0</span> Liter</p>
+            </div>
+            <div>
+                <table title="Seite neuladen um Tabelle zu aktualisieren" id="lastDaysTable">
+                </table> 
+            </div>
+        </main>
+    </body>
+    <script type="text/javascript" src="./js/7_watertracking.js"></script>
+</html>
