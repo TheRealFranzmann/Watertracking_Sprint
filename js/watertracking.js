@@ -1,6 +1,7 @@
 var measureWater = document.getElementById('measure-water');
 var waterAmount = document.getElementById('water-amount');
 var saveButton = document.getElementById('saveWaterAmount');
+var overviewButton = document.getElementById('overview');
 var water = 0;
 var saveCookiesForMin = 10080;
 var getItemsForDays = 7;
@@ -125,4 +126,8 @@ saveButton.addEventListener('click', ev => {
         glass: glass,
         mug: mug};
     setCookie(new Date(day).toLocaleDateString("de-DE").toString(), JSON.stringify(item), saveCookiesForMin);
+});
+
+overviewButton.addEventListener('click', ev => {
+    
 });
