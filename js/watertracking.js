@@ -142,4 +142,6 @@ resetBtn.addEventListener('click', async event => {
 });
 
 
-overviewBtn.addEventListener('click', )
+overviewBtn.addEventListener('click', event => {
+    window.location.href = ''
+});
