@@ -16,3 +16,29 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
+/*overview style*/
+#beveragesList {
+    
+}
+
+.button {
+    background-color: rgb(39, 39, 237);
+    border: 2px solid rgb(39, 39, 237);
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+}
+
+#submit {
+    background-color: rgb(26, 146, 24);
+    border-color: rgb(26, 146, 24);
+}
+
+#reset {
+    background-color: rgb(205, 47, 47);
+    border-color: rgb(205, 47, 47);
+}
+
+.button:hover {
+    border-color: #3b3a3a;
+}
