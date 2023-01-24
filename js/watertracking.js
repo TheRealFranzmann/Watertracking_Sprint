@@ -3,21 +3,21 @@ created by Benjamin Lamprecht
 22.10.2022
 */
 
+// variables
 var days = [];
 var glasJson = 0;
 var krugJson = 0;
+var x = 0;
 
 var submitBtn = document.getElementById('submit');
 var resetBtn = document.getElementById('reset');
-
 var canvas = document.getElementById("myCanvas");
 var weight = localStorage.getItem("weight");
-if (weight == null) weight = 0;
 var context = canvas.getContext("2d");
 var waterMeter = document.getElementById('waterMeter');
+var overviewBtn = document.getElementById('overview')
 
-init();
-
+// functions
 function init() {
     let totalGlas = 0;
     let totalKrug = 0;
@@ -33,16 +33,6 @@ function init() {
     document.getElementById("sumOfKrug").innerHTML = totalKrug;
 }
 
-
-if (weight == 0) {
-    weight = prompt("Bitte Gewicht angeben (in kg): ");
-    document.getElementById('weight').value = weight;
-    if (weight > 75) {
-        waterMeter.optimum = 4000;
-        waterMeter.max = 4000;
-    }
-}
-
 function fetchValues() {
     var num = document.getElementById('quantity').value;
     var glas = document.querySelector('input[name="amount"]:checked').value;
@@ -56,34 +46,6 @@ function fetchValues() {
 
 }
 
-setInterval(drawWater, 15);
-
-submitBtn.addEventListener('click', async event => {
-    event.preventDefault();
-    fetchValues();
-    document.getElementById('waterMeter').value = waterMeter.value;
-    drawWater();
-    await updateDay();
-
-    await saveToJson();
-    await init();
-});
-
-resetBtn.addEventListener('click', async event => {
-    event.preventDefault();
-    document.getElementById('waterMeter').value = 0;
-
-    let tempDay = JSON.parse(days[0]);
-    if (tempDay.date == new Date().toISOString().split('T')[0]) {
-        days.pop();
-    }
-    document.getElementById("#0Glas").innerHTML = '-';
-    document.getElementById("#0Krug").innerHTML = '-';
-    saveToJson();
-    init();
-});
-
-var x = 0;
 function drawWater() {
     x = x > 24 ? x = 0 : x++;
     x++;
@@ -102,7 +64,6 @@ function flush() {
     glasJson = 0;
     krugJson = 0;
 }
-
 
 async function updateDay() {
 
@@ -135,3 +96,50 @@ function createDay(glas, krug) {
     day.date = new Date().toISOString().split('T')[0];
     return JSON.stringify(day);
 }
+
+
+// stuff to happen
+if (weight == null) weight = 0;
+
+init();
+
+if (weight == 0) {
+    weight = prompt("Bitte Gewicht angeben (in kg): ");
+    document.getElementById('weight').value = weight;
+    if (weight > 75) {
+        waterMeter.optimum = 4000;
+        waterMeter.max = 4000;
+    }
+}
+
+setInterval(drawWater, 15);
+
+
+// listeners
+submitBtn.addEventListener('click', async event => {
+    event.preventDefault();
+    fetchValues();
+    document.getElementById('waterMeter').value = waterMeter.value;
+    drawWater();
+    await updateDay();
+
+    await saveToJson();
+    await init();
+});
+
+resetBtn.addEventListener('click', async event => {
+    event.preventDefault();
+    document.getElementById('waterMeter').value = 0;
+
+    let tempDay = JSON.parse(days[0]);
+    if (tempDay.date == new Date().toISOString().split('T')[0]) {
+        days.pop();
+    }
+    document.getElementById("#0Glas").innerHTML = '-';
+    document.getElementById("#0Krug").innerHTML = '-';
+    saveToJson();
+    init();
+});
+
+
+overviewBtn.addEventListener('click', )
