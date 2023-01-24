@@ -143,5 +143,5 @@ resetBtn.addEventListener('click', async event => {
 
 
 overviewBtn.addEventListener('click', event => {
-    window.location.href = ''
+    window.location.href = 'overview.html'
 });
