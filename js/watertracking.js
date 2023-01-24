@@ -13,9 +13,11 @@ var submitBtn = document.getElementById('submit');
 var resetBtn = document.getElementById('reset');
 var canvas = document.getElementById("myCanvas");
 var weight = localStorage.getItem("weight");
-var context = canvas.getContext("2d");
 var waterMeter = document.getElementById('waterMeter');
-var overviewBtn = document.getElementById('overview')
+var overviewBtn = document.getElementById('overview');
+
+var context = canvas.getContext("2d");
+
 
 // functions
 function init() {
