@@ -23,7 +23,8 @@ tr:nth-child(even) {
 
 .button {
     background-color: rgb(39, 39, 237);
-    border: 2px solid rgb(39, 39, 237);
+    border: 2px solid;
+    border-color: rgb(39, 39, 237);
     color: white;
     text-align: center;
     border-radius: 6px;
@@ -34,11 +35,19 @@ tr:nth-child(even) {
     border-color: rgb(26, 146, 24);
 }
 
+#submit:hover {
+    background-color: rgb(87, 196, 85);
+}
+
 #reset {
     background-color: rgb(205, 47, 47);
     border-color: rgb(205, 47, 47);
 }
 
+#reset:hover {
+    background-color: rgb(218, 81, 81);
+}
+
 .button:hover {
-    border-color: #3b3a3a;
+    background-color: rgb(40, 92, 234);
 }
