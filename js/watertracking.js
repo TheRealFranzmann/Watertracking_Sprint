@@ -20,6 +20,9 @@ var context = canvas.getContext("2d");
 var totalGlas = 0;
 var totalKrug = 0;
 
+var dialog = document.getElementById("dialogDelete");
+var dayToDelete;
+
 
 // functions
 function init() {
@@ -147,25 +150,32 @@ resetBtn.addEventListener('click', async event => {
     init();
 });
 
-async function deleteDay(i) {
-    let thisDay = await JSON.parse(days[i]);
-    if (thisDay == null) return;
+async function deleteDay(i, thisDay) {
     document.getElementById("#" + i + "Glas").innerHTML = '-';
     document.getElementById("#" + i + "Krug").innerHTML = '-';
-    
+
     totalGlas -= parseInt(thisDay.glas);
     totalKrug -= parseInt(thisDay.krug);
-       
+
     document.getElementById("sumOfGlas").innerHTML = totalGlas;
     document.getElementById("sumOfKrug").innerHTML = totalKrug;
-   
 
     days[i] = null;
-    
+
     // SQL query: DELETE FROM table_name WHERE thisDay.date;
-    
+
     saveToJson();
 };
+
+async function fireDialog(i) {
+    let thisDay = await JSON.parse(days[i]);
+    if (thisDay == null) return;
+
+    text =  `Do you want to delete this value? \n` +
+            `Day: ${thisDay.date} \t Glas: ${thisDay.glas} \t Krugs: ${thisDay.krug}`;
+
+    if (confirm(text) == true) deleteDay(i, thisDay);
+}
 
 overviewBtn.addEventListener('click', event => {
     window.location.href = 'overview.html'
