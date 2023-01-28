@@ -1,0 +1,25 @@
+{
+  "name": "harald_und_die_anderen_kasperl",
+  "version": "1.0.0",
+  "description": "watertracking",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "formidable": "^2.1.1",
+    "mysql2": "^2.3.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheRealFranzmann/Watertracking_Sprint.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheRealFranzmann/Watertracking_Sprint/issues"
+  },
+  "homepage": "https://github.com/TheRealFranzmann/Watertracking_Sprint#readme"
+}
