@@ -5,15 +5,15 @@ var amount = document.getElementById('amount').value;
 var unit = document.getElementById('unit').value;
 const backBtn = document.getElementById('backBtn');
 const submitBtn = document.getElementById('submitBtn');
+document.getElementById('form').addEventListener('submit', validateForm);
 
 // functions
 
-function validateForm() {
+function validateForm(event) {
     if (beverageName === '' || amount === '' || unit === '') {
         alert('Please fill out all fields!');
-        return false;
+        event.preventDefault;
     }
-    return true;
 }
 
 function insertInto() {
@@ -24,9 +24,4 @@ function insertInto() {
 
 backBtn.addEventListener('click', event => {
     window.location.href = '../overview.html';
-});
-
-submitBtn.addEventListener('click', event => {
-    validateForm();
-    insertInto();
 });
