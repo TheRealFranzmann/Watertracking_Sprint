@@ -23,14 +23,9 @@ connection.query(
 function initDummyData() {
     connection.query(
         'INSERT INTO wassertrinken (id, creationDate, editDate, name, amount, unit)' + 
-                    'VALUES' + "",
-                    // "('0030-01-01', 0, 1)," +
-                    // "('0030-01-02', 2, 3)," +
-                    // "('0030-01-03', 4, 5)," +
-                    // "('0030-01-04', 6, 7)," +
-                    // "('0030-01-05', 8, 9)," +
-                    // "('0030-01-06', 10,11)," +
-                    // "('0030-01-07', 12,13)",
+                    'VALUES' +
+                    "('0030-01-01', '0030-01-01', hello, 100, world)," +
+                    "('0030-01-01', '0030-01-01', hello, 100, world)",
         function (err, results, fields) {
             console.log(results);
         }
