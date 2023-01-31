@@ -83,7 +83,7 @@ async function updateDay() {
         var tempDay = await JSON.parse(days[0]);
         if (tempDay != null && tempDay.date == new Date().toISOString().split('T')[0]) {
             days[0] = await createDay(parseInt(tempDay.glas) + parseInt(glasJson), parseInt(tempDay.krug) + parseInt(krugJson));
-            //days[0] = await createDay(8, 8);
+            
             await flush();
             return;
         }
@@ -94,7 +94,6 @@ async function updateDay() {
 }
 
 function saveToJson() {
-    localStorage.setItem("weight", weight);
     localStorage.setItem("drinks", JSON.stringify(days));
 }
 
@@ -119,6 +118,7 @@ if (weight == 0) {
         waterMeter.optimum = 4000;
         waterMeter.max = 4000;
     }
+    localStorage.setItem("weight", weight);
 }
 
 setInterval(drawWater, 15);
@@ -149,33 +149,6 @@ resetBtn.addEventListener('click', async event => {
     saveToJson();
     init();
 });
-
-async function deleteDay(i, thisDay) {
-    document.getElementById("#" + i + "Glas").innerHTML = '-';
-    document.getElementById("#" + i + "Krug").innerHTML = '-';
-
-    totalGlas -= parseInt(thisDay.glas);
-    totalKrug -= parseInt(thisDay.krug);
-
-    document.getElementById("sumOfGlas").innerHTML = totalGlas;
-    document.getElementById("sumOfKrug").innerHTML = totalKrug;
-
-    days[i] = null;
-
-    // SQL query: DELETE FROM table_name WHERE thisDay.date;
-
-    saveToJson();
-};
-
-async function fireDialog(i) {
-    let thisDay = await JSON.parse(days[i]);
-    if (thisDay == null) return;
-
-    text =  `Do you want to delete this value? \n` +
-            `Day: ${thisDay.date} \t Glas: ${thisDay.glas} \t Krugs: ${thisDay.krug}`;
-
-    if (confirm(text) == true) deleteDay(i, thisDay);
-}
 
 overviewBtn.addEventListener('click', event => {
     window.location.href = 'overview.html'
