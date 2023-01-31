@@ -17,19 +17,26 @@ var waterMeter = document.getElementById('waterMeter');
 var overviewBtn = document.getElementById('overview');
 
 var context = canvas.getContext("2d");
+var totalGlas = 0;
+var totalKrug = 0;
+
+var dialog = document.getElementById("dialogDelete");
+var dayToDelete;
 
 
 // functions
 function init() {
-    let totalGlas = 0;
-    let totalKrug = 0;
+    totalGlas = 0;
+    totalKrug = 0;
     if (localStorage.getItem("drinks") != null) days = JSON.parse(localStorage.getItem("drinks"));
     for (let i = 0; i < days.length; i++) {
         let day = JSON.parse(days[i]);
-        document.getElementById("#" + i + "Glas").innerHTML = day.glas;
-        document.getElementById("#" + i + "Krug").innerHTML = day.krug;
-        totalGlas += parseInt(day.glas);
-        totalKrug += parseInt(day.krug);
+        if (day != null) {
+            document.getElementById("#" + i + "Glas").innerHTML = day.glas;
+            document.getElementById("#" + i + "Krug").innerHTML = day.krug;
+            totalGlas += parseInt(day.glas);
+            totalKrug += parseInt(day.krug);
+        }
     }
     document.getElementById("sumOfGlas").innerHTML = totalGlas;
     document.getElementById("sumOfKrug").innerHTML = totalKrug;
@@ -74,7 +81,7 @@ async function updateDay() {
     //if first execution
     if (days.length > 0) {
         var tempDay = await JSON.parse(days[0]);
-        if (tempDay.date == new Date().toISOString().split('T')[0]) {
+        if (tempDay != null && tempDay.date == new Date().toISOString().split('T')[0]) {
             days[0] = await createDay(parseInt(tempDay.glas) + parseInt(glasJson), parseInt(tempDay.krug) + parseInt(krugJson));
             //days[0] = await createDay(8, 8);
             await flush();
@@ -143,6 +150,32 @@ resetBtn.addEventListener('click', async event => {
     init();
 });
 
+async function deleteDay(i, thisDay) {
+    document.getElementById("#" + i + "Glas").innerHTML = '-';
+    document.getElementById("#" + i + "Krug").innerHTML = '-';
+
+    totalGlas -= parseInt(thisDay.glas);
+    totalKrug -= parseInt(thisDay.krug);
+
+    document.getElementById("sumOfGlas").innerHTML = totalGlas;
+    document.getElementById("sumOfKrug").innerHTML = totalKrug;
+
+    days[i] = null;
+
+    // SQL query: DELETE FROM table_name WHERE thisDay.date;
+
+    saveToJson();
+};
+
+async function fireDialog(i) {
+    let thisDay = await JSON.parse(days[i]);
+    if (thisDay == null) return;
+
+    text =  `Do you want to delete this value? \n` +
+            `Day: ${thisDay.date} \t Glas: ${thisDay.glas} \t Krugs: ${thisDay.krug}`;
+
+    if (confirm(text) == true) deleteDay(i, thisDay);
+}
 
 overviewBtn.addEventListener('click', event => {
     window.location.href = 'overview.html'

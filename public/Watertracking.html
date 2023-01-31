@@ -14,6 +14,12 @@ created by Benjamin Lamprecht
 </head>
 
 <body>
+    <dialog id="dialogDelete">
+        <div width="100%">Bist da sicher..?</div>
+        <span>Tupl info</span>
+        <button type="button" onclick="confirm(true)">Delete</button>
+        <button type="button" onclick="confirm(false)">Cancel</button>
+    </dialog>
     <h1>Wasser Trinken</h1>
     <span>Erfasse und analysiere dein Trinkverhalten mit der <b>Wasser Trinken WebApp</b>.</span>
     <form method="post">
@@ -35,6 +41,7 @@ created by Benjamin Lamprecht
             <label for="Krug 500ml">Krug 500ml: </label>
             <input id="amount500ml" type="radio" name="amount" value="500" required>
         </div>
+        <button class="button" type="button" id="overview">overview</button>
         <div>
             <label for="quantity">Wie oft hast du die ausgewählte Menge getrunken (zwischen 1x bis 5x): </label>
             <input id="quantity" type="number" name="quantity" min="1" max="5" value="1" required>
@@ -42,7 +49,7 @@ created by Benjamin Lamprecht
         <div>
             <input class="button" type="submit" id="submit" value="speichern">
             <input class="button" type="reset" id="reset" value="zurücksetzen">
-            <button class="button" type="button" id="overview">Overview</button>
+
         </div>
         <input type="hidden" name="firstname" value="Benjamin">
         <input type="hidden" name="lastname" value="Lamprecht">
@@ -68,36 +75,43 @@ created by Benjamin Lamprecht
             <th>Today</th>
             <th id="#0Glas">-</th>
             <th id="#0Krug">-</th>
+            <th><img src="resource\delete.png" title="delete" alt="delete" onclick="fireDialog(0)"></th>
         </tr>
         <tr>
             <th>Yesterday</th>
             <th id="#1Glas">-</th>
             <th id="#1Krug">-</th>
+            <th><img src="resource\delete.png" title="delete" alt="delete" onclick="fireDialog(1)"></th>
         </tr>
         <tr>
             <th>the day before Yesterday</th>
             <th id="#2Glas">-</th>
             <th id="#2Krug">-</th>
+            <th><img src="resource\delete.png" title="delete" alt="delete" onclick="fireDialog(2)"></th>
         </tr>
         <tr>
             <th>the other day before Yesterday</th>
             <th id="#3Glas">-</th>
             <th id="#3Krug">-</th>
+            <th><img src="resource\delete.png" title="delete" alt="delete" onclick="fireDialog(3)"></th>
         </tr>
         <tr>
             <th>The other first day since you forgot</th>
             <th id="#4Glas">-</th>
             <th id="#4Krug">-</th>
+            <th><img src="resource\delete.png" title="delete" alt="delete" onclick="fireDialog(4)"></th>
         </tr>
         <tr>
             <th>Yesterday 2.0</th>
             <th id="#5Glas">-</th>
             <th id="#5Krug">-</th>
+            <th><img src="resource\delete.png" title="delete" alt="delete" onclick="fireDialog(5)"></th>
         </tr>
         <tr>
             <th>Return of First day</th>
             <th id="#6Glas">-</th>
             <th id="#6Krug">-</th>
+            <th><img src="resource\delete.png" title="delete" alt="delete" onclick="fireDialog(6)"></th>
         </tr>
         <tr id="summary">
             <th>Total</th>

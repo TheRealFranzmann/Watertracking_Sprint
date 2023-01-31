@@ -1,0 +1,67 @@
+/*table style*/
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+/*overview style*/
+#beveragesList {
+    
+}
+
+.button {
+    background-color: rgb(39, 39, 237);
+    border: 2px solid;
+    border-color: rgb(39, 39, 237);
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+}
+
+#submit {
+    background-color: rgb(26, 146, 24);
+    border-color: rgb(26, 146, 24);
+}
+
+#submit:hover {
+    background-color: rgb(87, 196, 85);
+}
+
+#reset {
+    background-color: rgb(205, 47, 47);
+    border-color: rgb(205, 47, 47);
+}
+
+#reset:hover {
+    background-color: rgb(218, 81, 81);
+}
+
+.button:hover {
+    background-color: rgb(40, 92, 234);
+}
+
+#dialogDelete {
+    position: flex;
+    top: 50%;
+    left: 50%;
+    border: 0;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
