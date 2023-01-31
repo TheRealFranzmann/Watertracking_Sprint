@@ -27,5 +27,5 @@ backBtn.addEventListener('click', event => {
 
 // listener for add button
 addBtn.addEventListener('click', event => {
-    window.location.href = 'addForm.html';
+    window.location.href = '../addForm.html';
 })
