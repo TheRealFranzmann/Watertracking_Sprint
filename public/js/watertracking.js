@@ -150,31 +150,19 @@ resetBtn.addEventListener('click', async event => {
     init();
 });
 
-async function deleteDay(i, thisDay) {
-    document.getElementById("#" + i + "Glas").innerHTML = '-';
-    document.getElementById("#" + i + "Krug").innerHTML = '-';
-
-    totalGlas -= parseInt(thisDay.glas);
-    totalKrug -= parseInt(thisDay.krug);
-
-    document.getElementById("sumOfGlas").innerHTML = totalGlas;
-    document.getElementById("sumOfKrug").innerHTML = totalKrug;
-
-    days[i] = null;
-
-    // SQL query: DELETE FROM table_name WHERE thisDay.date;
-
-    saveToJson();
+async function deleteBeverage(id) {
+    if (id == null) return;
+    // SQL query: DELETE FROM table_name WHERE id;
 };
 
-async function fireDialog(i) {
-    let thisDay = await JSON.parse(days[i]);
-    if (thisDay == null) return;
+async function fireDialog(id) {
+    let beverage = await "SQL query: SELECT * FROM table_name WHERE id";
+    if (beverage == null) return;
 
-    text =  `Do you want to delete this value? \n` +
-            `Day: ${thisDay.date} \t Glas: ${thisDay.glas} \t Krugs: ${thisDay.krug}`;
+    text = `Do you want to delete this value?` +
+            `${beverage}`;
 
-    if (confirm(text) == true) deleteDay(i, thisDay);
+    if (confirm(text) == true) deleteBeverage(id);
 }
 
 overviewBtn.addEventListener('click', event => {
