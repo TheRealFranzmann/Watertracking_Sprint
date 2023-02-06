@@ -13,11 +13,11 @@ backBtn.addEventListener('click', event => {
     window.location.href = '../static/Watertracking.html';
 });
 
-/*
-// listener for add button
+
+//listener for add button
 addBtn.addEventListener('click', event => {
-    window.location.href = '../static/addForm.html';
-});*/
+    window.location.href = '/addForm';
+});
 
 
 async function createTableRows() {

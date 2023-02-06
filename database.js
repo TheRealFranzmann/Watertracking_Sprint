@@ -47,7 +47,7 @@ function getContainerById(id) {
 
 function insertContainer(container) {
     return new Promise((resolve, reject) => {
-        const query = 'INSERT INTO liquid (creationDate, editDate, name, amount, unit) VALUES (?, ?, ?, ?, ?)';
+        const query = 'INSERT INTO `container` (creationDate, editDate, name, amount, unit) VALUES (?, ?, ?, ?, ?)';
         connection.query(query, [new Date(), new Date(), container.name, container.amount, container.unit], (error, results) => {
             if (error) {
                 reject(error);

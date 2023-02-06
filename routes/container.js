@@ -3,9 +3,9 @@ var router = express.Router();
 module.exports = router;
 const model = require('./../database');
 const fs = require('fs');
-//const { getAllContainer } = require('./../database');
 const { error } = require('console');
-
+const { getAllContainer } = require('./../database');
+const formidable = require('formidable');
 
 router.use("/static", express.static('public'));
 
@@ -54,6 +54,18 @@ router.get('/overview', function(req, res) {
                     console.log('ERROR');
                 }
             )
+            res.write(page);
+        }
+        res.end();
+    });
+});
+
+router.get('/addForm', function(req, res, next) {
+    fs.readFile('./public/addForm.html', null, function(error, page) {
+        if (error) {
+            res.writeHead(404);
+            res.write('Page not found!')
+        } else {
             res.write(page);
         }
         res.end();
