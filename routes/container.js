@@ -36,4 +36,3 @@ router.post('/init', (req, res) => {
         }
     )
 });
-
