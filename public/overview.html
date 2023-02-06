@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Beverage Overview</title>
-        <script defer src="/static/js/overview.js"></script>
-        <link rel="stylesheet" href="/static/css/style.css">
-    </head>
-    <body class="bodylog">
-        <button class="button" id="backBtn" type="button">Back</button>
-        <li id="beveragesList">
 
-        </li>
+<head>
+    <meta charset="utf-8">
+    <title>Beverage Overview</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body class="bodylog">
+    <button class="button" id="backBtn" type="button">Back</button>
+    <button class="button" id="addBtn" type="button">Add</button>
+    <table id="beveragesTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>CreationDate</th>
+                <th>EditDate</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Unit</th>
+            </tr>
+        </thead>
+        <tbody id="data">
+            <!-- Data displayed here -->
+        </tbody>
+    </table>
     </section>
-    </body>
+
+    <script defer src="/static/js/overview.js"></script>
+</body>
+
 </html>
