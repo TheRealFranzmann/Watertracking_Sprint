@@ -28,21 +28,30 @@ async function createTableRows() {
             containers => {
                 var table = document.getElementById('beveragesTable');
                 var row = '';
-
                 for (var i = 0; i <= containers.length - 1; i++) {
+                    line = containers[i];
                     row = document.createElement('tr');
                     let rowName = document.createElement('td');
                     let rowAmount = document.createElement('td');
                     let rowUnit = document.createElement('td');
+                    let editLine = document.createElement('a');
+                    editLine.href = '../static/edit_form.html?id=' + line.id;
+                    let editPen = document.createElement('img');
+                    editPen.src = '../static/resource/edit_icon.png';
 
-                    line = containers[i];
+
+
+                    console.log(line);
                     rowName.innerHTML = line.name;
                     rowAmount.innerHTML = line.amount;
                     rowUnit.innerHTML = line.unit;
 
+
                     row.appendChild(rowName);
                     row.appendChild(rowAmount);
                     row.appendChild(rowUnit);
+                    row.appendChild(editLine);
+                    editLine.appendChild(editPen);
                     table.appendChild(row);
                 };
 

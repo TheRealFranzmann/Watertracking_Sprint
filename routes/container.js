@@ -3,6 +3,7 @@ var router = express.Router();
 module.exports = router;
 const model = require('./../database');
 const fs = require('fs');
+const { error } = require('console');
 const { getAllContainer } = require('./../database');
 const formidable = require('formidable');
 
@@ -59,7 +60,7 @@ router.get('/overview', function(req, res) {
     });
 });
 
-router.get('/addForm', function(req, res, next) {
+router.get('/addForm', function(req, res) {
     fs.readFile('./public/addForm.html', null, function(error, page) {
         if (error) {
             res.writeHead(404);
@@ -75,6 +76,17 @@ router.get('/data', function(req, res) {
     var results = model.getAllContainer().then(
         containers => {
             res.send(containers);
+        },
+        error => {
+            console.log('ERROR');
+        }
+    )
+});
+
+router.get('/dataById/:class', function(req, res) {
+    var results = model.get(req.params.class).then(
+        container => {
+            res.send(container);
         },
         error => {
             console.log('ERROR');
