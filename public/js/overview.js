@@ -6,6 +6,7 @@ created by Kathrin Hubmann
 // variables
 var backBtn = document.getElementById('backBtn');
 var list = document.getElementById('beveragesList');
+var addBtn = document.getElementById('addBtn');
 
 // functions
 function init() {
@@ -23,3 +24,8 @@ function getSavedVessels() {
 backBtn.addEventListener('click', event => {
     window.location.href = 'Watertracking.html';
 });
+
+// listener for add button
+addBtn.addEventListener('click', event => {
+    window.location.href = '../addForm.html';
+})
