@@ -4,6 +4,7 @@ module.exports = router;
 const model = require('./../database');
 const fs = require('fs');
 const { getAllContainer } = require('./../database');
+const { error } = require('console');
 
 
 router.use("/static", express.static('public'));
@@ -68,4 +69,15 @@ router.get('/data', function(req, res) {
             console.log('ERROR');
         }
     )
-})
+});
+
+router.get('/dataById', function(req, res) {
+    var results = model.getContainerById().then(
+        container => {
+            res.send(container);
+        },
+        error => {
+            console.log('ERROR');
+        }
+    )
+});
