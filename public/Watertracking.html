@@ -28,10 +28,10 @@ created by Benjamin Lamprecht
                 <label for="liquid-choice">Was hast du getrunken?: </label>
                 <input list="drinks" id="iquid-choice" type="text" name="iquid-choice" required>
                 <datalist id="drinks">
-            <option>Kaffee</option>
-            <option>Wasser</option>
-            <option>Apfelsaft</option>
-        </datalist>
+                    <option>Kaffee</option>
+                    <option>Wasser</option>
+                    <option>Apfelsaft</option>
+                </datalist>
             </div>
             <span>Welche Menge hast du getrunken?</span>
             <div>
@@ -50,60 +50,73 @@ created by Benjamin Lamprecht
             <div>
                 <input class="button" type="submit" id="submit" value="speichern">
                 <input class="button" type="reset" id="reset" value="zurücksetzen">
-                <table>
-                    <tr>
-                        <th>Days</th>
-                        <th>Glas</th>
-                        <th>Krug</th>
-                    </tr>
-                    <tr>
-                        <th>Today</th>
-                        <th id="#0Glas">-</th>
-                        <th id="#0Krug">-</th>
-                        <th><img src="/static/resource/delete.png" title="delete" alt="delete" onclick="fireDialog(0)"></th>
-                    </tr>
-                    <tr>
-                        <th>Yesterday</th>
-                        <th id="#1Glas">-</th>
-                        <th id="#1Krug">-</th>
-                        <th><img src="/static/resource/delete.png" title="delete" alt="delete" onclick="fireDialog(1)"></th>
-                    </tr>
-                    <tr>
-                        <th>the day before Yesterday</th>
-                        <th id="#2Glas">-</th>
-                        <th id="#2Krug">-</th>
-                        <th><img src="static/resource/delete.png" title="delete" alt="delete" onclick="fireDialog(2)"></th>
-                    </tr>
-                    <tr>
-                        <th>the other day before Yesterday</th>
-                        <th id="#3Glas">-</th>
-                        <th id="#3Krug">-</th>
-                        <th><img src="static/resource/delete.png" title="delete" alt="delete" onclick="fireDialog(3)"></th>
-                    </tr>
-                    <tr>
-                        <th>The other first day since you forgot</th>
-                        <th id="#4Glas">-</th>
-                        <th id="#4Krug">-</th>
-                        <th><img src="static/resource/delete.png" title="delete" alt="delete" onclick="fireDialog(4)"></th>
-                    </tr>
-                    <tr>
-                        <th>Yesterday 2.0</th>
-                        <th id="#5Glas">-</th>
-                        <th id="#5Krug">-</th>
-                        <th><img src="static/resource/delete.png" title="delete" alt="delete" onclick="fireDialog(5)"></th>
-                    </tr>
-                    <tr>
-                        <th>Return of First day</th>
-                        <th id="#6Glas">-</th>
-                        <th id="#6Krug">-</th>
-                        <th><img src="static/resource/delete.png" title="delete" alt="delete" onclick="fireDialog(6)"></th>
-                    </tr>
-                    <tr id="summary">
-                        <th>Total</th>
-                        <th id="sumOfGlas">-</th>
-                        <th id="sumOfKrug">-</th>
-                    </tr>
-                </table>
+                <input id='weight' type="hidden" weight="lastname" value="0">
+                <div>
+                    <span>Aktuelle Tagesmenge: </span>
+                    <meter id="waterMeter" value="0" , min="0" optimum="3000" , max="3000"></meter>
+                </div>
+                <div>
+                    <span>Aktuelle Tagesmenge: </span>
+                    <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+                    </canvas>
+                </div>
+    </section>
+    <section>
+        <table>
+            <tr>
+                <th>Days</th>
+                <th>Glas</th>
+                <th>Krug</th>
+            </tr>
+            <tr>
+                <th>Today</th>
+                <th id="#0Glas">-</th>
+                <th id="#0Krug">-</th>
+                <th><img src="/static/resource/delete.png" title="delete" alt="delete" onclick="fireDialog(0)"></th>
+            </tr>
+            <tr>
+                <th>Yesterday</th>
+                <th id="#1Glas">-</th>
+                <th id="#1Krug">-</th>
+                <th><img src="/static/resource/delete.png" title="delete" alt="delete" onclick="fireDialog(1)"></th>
+            </tr>
+            <tr>
+                <th>the day before Yesterday</th>
+                <th id="#2Glas">-</th>
+                <th id="#2Krug">-</th>
+                <th><img src="static/resource/delete.png" title="delete" alt="delete" onclick="fireDialog(2)"></th>
+            </tr>
+            <tr>
+                <th>the other day before Yesterday</th>
+                <th id="#3Glas">-</th>
+                <th id="#3Krug">-</th>
+                <th><img src="static/resource/delete.png" title="delete" alt="delete" onclick="fireDialog(3)"></th>
+            </tr>
+            <tr>
+                <th>The other first day since you forgot</th>
+                <th id="#4Glas">-</th>
+                <th id="#4Krug">-</th>
+                <th><img src="static/resource/delete.png" title="delete" alt="delete" onclick="fireDialog(4)"></th>
+            </tr>
+            <tr>
+                <th>Yesterday 2.0</th>
+                <th id="#5Glas">-</th>
+                <th id="#5Krug">-</th>
+                <th><img src="static/resource/delete.png" title="delete" alt="delete" onclick="fireDialog(5)"></th>
+            </tr>
+            <tr>
+                <th>Return of First day</th>
+                <th id="#6Glas">-</th>
+                <th id="#6Krug">-</th>
+                <th><img src="static/resource/delete.png" title="delete" alt="delete" onclick="fireDialog(6)"></th>
+            </tr>
+            <tr id="summary">
+                <th>Total</th>
+                <th id="sumOfGlas">-</th>
+                <th id="sumOfKrug">-</th>
+            </tr>
+        </table>
+    </section>
 </body>
 
 </html>

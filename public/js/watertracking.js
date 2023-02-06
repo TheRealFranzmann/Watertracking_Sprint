@@ -178,5 +178,5 @@ async function fireDialog(i) {
 }
 
 overviewBtn.addEventListener('click', event => {
-    window.location.href = '/overview'
+    window.location.href = '/overview';
 });

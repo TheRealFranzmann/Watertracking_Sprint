@@ -37,3 +37,34 @@ router.post('/init', (req, res) => {
         }
     )
 });
+
+router.get('/overview', function(req, res) {
+    fs.readFile('./public/overview.html', null, function(error, page) {
+        if (error) {
+            res.writeHead(404);
+            res.write("Page not found!")
+        } else {
+            model.getAllContainer().then(
+                containers => {
+                    console.log(containers)
+                },
+                error => {
+                    console.log('ERROR');
+                }
+            )
+            res.write(page);
+        }
+        res.end();
+    });
+});
+
+router.get('/data', function(req, res) {
+    var results = model.getAllContainer().then(
+        containers => {
+            res.send(containers);
+        },
+        error => {
+            console.log('ERROR');
+        }
+    )
+})
