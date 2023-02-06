@@ -10,10 +10,10 @@ var addBtn = document.getElementById('addBtn');
 
 // functions
 function init() {
-    getSavedBeverages();
+    getSavedVessels();
 }
 
-function getSavedBeverages() {
+function getSavedVessels() {
     // get beverages from database and add them to the list
 }
 
