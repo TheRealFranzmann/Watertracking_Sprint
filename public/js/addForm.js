@@ -10,15 +10,13 @@ document.getElementById('form').addEventListener('submit', validateForm);
 // functions
 
 function validateForm(event) {
-    if (beverageName === '' || amount === '' || unit === '') {
+    if (beverageName.value === '' || amount.value === '') {
         alert('Please fill out all fields!');
         event.preventDefault;
     }
 }
 
-function insertInto() {
-
-}
+function insertInto() {}
 
 // listener
 
