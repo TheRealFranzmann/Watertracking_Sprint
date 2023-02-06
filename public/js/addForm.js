@@ -1,5 +1,5 @@
 // variables
-
+const connection = require('./database.js');
 var beverageName = document.getElementById('name').value;
 var amount = document.getElementById('amount').value;
 var unit = document.getElementById('unit').value;
@@ -16,10 +16,11 @@ function validateForm(event) {
     }
 }
 
-function insertInto() {}
-
 // listener
 
+submitBtn.addEventListener('click', event => {
+    connection.insertContainer();
+});
 backBtn.addEventListener('click', event => {
     window.location.href = '../overview.html';
 });
