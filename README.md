@@ -12,7 +12,11 @@ You can get to this page when you click on the overview button on the Watertrack
 
 ![Get to Overview](./public/resource/GetToOverview.png)
 
-Here you can see all the vessels that you can choose from with their name, the amount that can fit in there and the unit for that amount. On the bottom there are two buttons one to go back to the Watertracking form and one to add a new vessel to the list. Next to every tuple there are three buttons. One to edit the data, one to look at it in detail and one one to delöete it.
+Here you can see all the vessels that you can choose from with their name, the amount that can fit in there and the unit for that amount. On the bottom there are two buttons one to go back to the Watertracking form and one to add a new vessel to the list. Next to every tuple there are three buttons. One to edit the data, one to look at it in detail and one to delete it.
+
+The Overview Table:
+
+![Overview Table](./public/resource/OverviewTable.png)
 
 ## Detailed Overview
 
@@ -26,3 +30,6 @@ Here you can add your own vessel to the list. Give it a name, the amount that it
 
 ## Edit Form
 
+Here you can edit your existing values. You can rename them, give them a different amount or a different meassuring unit. With cancel you discard all your changes and go straight back to the overview. With submit you submit your changes and will see them directly after beeing redirected to the overview. 
+
+![Edit Form](./public/resource/EditForm.png)
