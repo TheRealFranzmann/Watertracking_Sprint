@@ -28,8 +28,9 @@ async function createTableRows() {
             containers => {
                 var row = '';
                 for (var index = 0; index <= containers.length - 1; index++) {
-                    line = containers[i];
+                    
                     (function (i) {
+                        line = containers[i];
                         row = document.createElement('tr');
                         let rowName = document.createElement('td');
                         let rowAmount = document.createElement('td');
