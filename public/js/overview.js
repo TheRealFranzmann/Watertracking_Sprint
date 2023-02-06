@@ -3,21 +3,23 @@ created by Kathrin Hubmann
 24.01.2023
 */
 
+var database = require('../../database');
+
 // variables
 var backBtn = document.getElementById('backBtn');
 var list = document.getElementById('beveragesList');
 var addBtn = document.getElementById('addBtn');
 
-
 // listeners
 backBtn.addEventListener('click', event => {
-    window.location.href = 'Watertracking.html';
+    window.location.href = '../static/Watertracking.html';
 });
 
+/*
 // listener for add button
 addBtn.addEventListener('click', event => {
-    window.location.href = '../addForm.html';
-});
+    window.location.href = '../static/addForm.html';
+});*/
 
 
 async function createTableRows() {
