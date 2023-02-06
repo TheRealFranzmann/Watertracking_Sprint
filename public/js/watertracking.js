@@ -171,12 +171,12 @@ async function fireDialog(i) {
     let thisDay = await JSON.parse(days[i]);
     if (thisDay == null) return;
 
-    text =  `Do you want to delete this value? \n` +
-            `Day: ${thisDay.date} \t Glas: ${thisDay.glas} \t Krugs: ${thisDay.krug}`;
+    text = `Do you want to delete this value? \n` +
+        `Day: ${thisDay.date} \t Glas: ${thisDay.glas} \t Krugs: ${thisDay.krug}`;
 
     if (confirm(text) == true) deleteDay(i, thisDay);
 }
 
 overviewBtn.addEventListener('click', event => {
-    window.location.href = 'overview.html'
+    window.location.href = '/overview'
 });
