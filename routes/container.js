@@ -60,7 +60,7 @@ router.get('/overview', function(req, res) {
     });
 });
 
-router.get('/addForm', function(req, res, next) {
+router.get('/addForm', function(req, res) {
     fs.readFile('./public/addForm.html', null, function(error, page) {
         if (error) {
             res.writeHead(404);
