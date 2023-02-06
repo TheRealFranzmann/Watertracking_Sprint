@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>AddForm</title>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 
 <body>
     <h1>Form to add new beverages!</h1>
-    <form id="form">
+    <form id="form" action="/save" method="post">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br><br>
 
-        <label for="amount">Amount:</label>
+        <label for="amount">Amount (Numbers only!):</label>
         <input type="text" id="amount" name="amount" pattern="[0-9]+" required><br><br>
 
         <label for="unit">Unit:</label>
@@ -22,11 +23,11 @@
             <option value="centi">cl</option>
         </select><br><br>
 
-        <input type="submit" value="Submit">
+        <button class="button" id="submitBtn" type="submit" value="Submit">Save</button>
         <button class="button" id="backBtn" type="button">Back</button>
 
         <!-- Script -->
-        <script src="js/addForm.js"></script>
+        <script type="text/javascript" src="/static/js/addForm.js"></script>
     </form>
 </body>
 
