@@ -8,17 +8,6 @@ var backBtn = document.getElementById('backBtn');
 var list = document.getElementById('beveragesList');
 var addBtn = document.getElementById('addBtn');
 
-// functions
-function init() {
-    getSavedVessels();
-}
-
-function getSavedVessels() {
-    // get beverages from database and add them to the list
-}
-
-// stuff to happen
-//init();
 
 // listeners
 backBtn.addEventListener('click', event => {
@@ -26,6 +15,6 @@ backBtn.addEventListener('click', event => {
 });
 
 // listener for add button
-addBtn.addEventListener('click', event => {
-    window.location.href = '../addForm.html';
-})
+//addBtn.addEventListener('click', event => {
+//    window.location.href = '../addForm.html';
+// })

@@ -37,3 +37,36 @@ router.post('/init', (req, res) => {
     )
 });
 
+/*
+router.get('/overview', (req, res) => {
+    model.getAllContainer().then(
+        containers => {
+            res.send(getList(containers))
+        },
+        error => {
+            console.log('ERROR');
+        }
+    )
+})
+*/
+
+router.get('/overview', (request, response) => {
+    const query = "SELECT * FROM users";
+    connection.query(query,(error, results) => {
+        if(error) throw error;
+
+        let rows = "";
+        results.array.forEach(row => {
+            rows += "<tr>";
+            rows += "<td>" + row.id + "</td>";
+            rows += "<td>" + row.creationDate + "</td>";
+            rows += "<td>" + row.editDate + "</td>";
+            rows += "<td>" + row.name + "</td>";
+            rows += "<td>" + row.amount + "</td>";
+            rows += "<td>" + row.unit + "</td>";
+            rows += "</tr>";
+        });
+
+        response.send(rows);
+    });
+});

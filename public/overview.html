@@ -9,12 +9,27 @@
     <body class="bodylog">
         <button class="button" id="backBtn" type="button">Back</button>
         <table id="beveragesTable">
-            <tr>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Unit</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>CreationDate</th>
+                    <th>EditDate</th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Unit</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+                <!-- Data displayed here -->
+            </tbody>
         </table>
+        <script>
+            fetch("/overview")
+            .then(response => response.text())
+            .then(html =>{
+                document.getElementById("data").innerHTML = html;
+            });
+        </script>
     </section>
     </body>
 </html>
