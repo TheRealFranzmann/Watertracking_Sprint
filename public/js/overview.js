@@ -34,15 +34,22 @@ async function createTableRows() {
                     let rowName = document.createElement('td');
                     let rowAmount = document.createElement('td');
                     let rowUnit = document.createElement('td');
+                    let editPen = document.createElement('img');
+                    editPen.src = 'static/resource/edit_icon.png';
 
                     line = containers[i];
                     rowName.innerHTML = line.name;
                     rowAmount.innerHTML = line.amount;
                     rowUnit.innerHTML = line.unit;
 
+                    editPen.addEventListener('click', function() {
+                        window.location.href = '../static/edit_form.html?id=' + line.id;
+                    });
+
                     row.appendChild(rowName);
                     row.appendChild(rowAmount);
                     row.appendChild(rowUnit);
+                    row.appendChild(editPen);
                     table.appendChild(row);
                 };
 

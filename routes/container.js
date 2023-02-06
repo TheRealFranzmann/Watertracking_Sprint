@@ -3,7 +3,7 @@ var router = express.Router();
 module.exports = router;
 const model = require('./../database');
 const fs = require('fs');
-const { getAllContainer } = require('./../database');
+//const { getAllContainer } = require('./../database');
 const { error } = require('console');
 
 
@@ -71,8 +71,8 @@ router.get('/data', function(req, res) {
     )
 });
 
-router.get('/dataById', function(req, res) {
-    var results = model.getContainerById().then(
+router.get('/dataById/:class', function(req, res) {
+    var results = model.get(req.params.class).then(
         container => {
             res.send(container);
         },

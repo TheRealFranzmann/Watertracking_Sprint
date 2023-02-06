@@ -9,18 +9,20 @@
   <body>
     <form>
       <div>
+        <label for="name">Name: </label>
         <input type="text" id="name" name="name">
+        <label for="amount">Amount: </label>
         <input type="number" id="amount" name="amount">
-        <input list="units" id="unit" name="unit">
-        <datalist id="units">
-          <option value="ml"></option>
-          <option value="cl"></option>
-          <option value="l"></option>
-        </datalist>
+        <label for="unit">Unit: </label>
+        <select id="units">
+          <option value="ml">ml</option>
+          <option value="cl">cl</option>
+          <option value="l">l</option>
+        </select>
       </div>
       <div>
         <button id="submit" value="submit" type="submit">Submit</button>
-        <button id="cancel" value="cancel" type="reset">Cancel</button>
+        <button id="cancel" value="cancel" type="button">Cancel</button>
       </div>
     </form>
   </body>

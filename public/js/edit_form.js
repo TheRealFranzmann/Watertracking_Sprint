@@ -1,17 +1,33 @@
-const { response } = require("express");
-
-var name = document.getElementById('name');
+var nameField = document.getElementById('name');
 var amount = document.getElementById('amount');
-var unit = document.getElementById('unit');
+var unit = document.getElementById('units');
+var cancel = document.getElementById('cancel');
+var submit = getElementById('submit');
+const urlParams = new URLSearchParams(window.location.search);
+var id = urlParams.get('id');
 
-async function fillEditForm() {
-    const container = await fetch('http://localhost:5000/dataById')
+function fillEditForm() {
+    var container = fetch('http://localhost:5000/dataById/' + id)
     .then(response => response.json())
     .then(
         container => {
-            name.innerHTML = container.name;
-            amount.innerHTML = container.amount;
-            //unit.innerHTML = container.unit; -> datalist?
+            nameField.value = container.name;
+            amount.value = container.amount;
+            unit.value = container.unit;
+        },
+        error => {
+            console.log('ERROR');
         }
-    )
-}
+    );
+};
+
+cancel.addEventListener('click', e => {
+    window.location.href ='../static/overview.html';
+});
+
+submit.addEventListener('click', e => {
+    e.preventDefault();
+    
+})
+
+fillEditForm();
