@@ -13,7 +13,7 @@ console.log('connected to watertracking');
 
 connection.query(
     'CREATE TABLE IF NOT EXISTS container (id INT NOT NULL AUTO_INCREMENT , creationDate DATE NOT NULL , editDate DATE NOT NULL , name VARCHAR(255) NOT NULL , amount INT NOT NULL , unit VARCHAR(255) NOT NULL , PRIMARY KEY(id))',
-    function (err, results, fields) {
+    function(err, results, fields) {
         console.log(results);
     }
 );
@@ -79,7 +79,7 @@ function initDummyData() {
         'VALUES' +
         "('0030-01-01', '0030-01-01', 'glass', 330, 'ml')," +
         "('0030-01-01', '0030-01-01', 'mug', 250, 'ml')",
-        function (err, results, fields) {
+        function(err, results, fields) {
             console.log(results);
         }
     );
