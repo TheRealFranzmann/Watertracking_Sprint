@@ -81,3 +81,20 @@ router.get('/dataById/:class', function(req, res) {
         }
     )
 });
+
+router.post('/save', function(req, res) {
+    const form = new formidable.IncomingForm();
+    form.parse(req, (err, beverage, files) => {
+        console.log(beverage);
+        model.save(beverage).then(
+            beverage => {
+                res.writeHead(302, {
+                    location: '/overview',
+                    'content-type': 'text/plain'
+                });
+                res.end('302 Redirecting to /overview');
+            },
+            error => res.send(error)
+        );
+    });
+});

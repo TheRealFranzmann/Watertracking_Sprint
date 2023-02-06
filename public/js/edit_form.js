@@ -2,7 +2,7 @@ var nameField = document.getElementById('name');
 var amount = document.getElementById('amount');
 var unit = document.getElementById('units');
 var cancel = document.getElementById('cancel');
-var submit = getElementById('submit');
+var submit = document.getElementById('submit');
 const urlParams = new URLSearchParams(window.location.search);
 var id = urlParams.get('id');
 
@@ -26,8 +26,7 @@ cancel.addEventListener('click', e => {
 });
 
 submit.addEventListener('click', e => {
-    e.preventDefault();
-    
-})
+    //e.preventDefault();
+});
 
 fillEditForm();

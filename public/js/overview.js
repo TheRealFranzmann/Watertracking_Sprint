@@ -35,7 +35,7 @@ async function createTableRows() {
                     let rowAmount = document.createElement('td');
                     let rowUnit = document.createElement('td');
                     let editPen = document.createElement('img');
-                    editPen.src = 'static/resource/edit_icon.png';
+                    editPen.src = '../static/resource/edit_icon.png';
 
                     line = containers[i];
                     rowName.innerHTML = line.name;
