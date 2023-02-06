@@ -3,8 +3,6 @@ created by Kathrin Hubmann
 24.01.2023
 */
 
-var database = require('../../database');
-
 // variables
 var backBtn = document.getElementById('backBtn');
 var list = document.getElementById('beveragesList');
