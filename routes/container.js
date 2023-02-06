@@ -30,14 +30,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/init', (req, res) => {
-    model.initDummyData().then(
-        containers => {
-            console.log(containers)
-        },
-        error => {
-            console.log('ERROR');
-        }
-    )
+    model.initDummyData();
 });
 
 router.get('/overview', function(req, res) {
@@ -109,4 +102,23 @@ router.post('/save', function(req, res) {
             error => res.send(error)
         );
     });
+});
+
+router.get("/delete/:id", (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    model.delete(id);
+    res.writeHead(302, {
+        location: '/overview', 'content-type': 'text/plain'
+    });
+    res.end('302 Redirecting to /overview');
+});
+
+router.get("/get/:id", (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    model.get(id).then(
+        line => {
+            res.send(line);
+        },
+        error => res.send("error")
+    );
 });
