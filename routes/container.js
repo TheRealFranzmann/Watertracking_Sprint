@@ -57,7 +57,6 @@ router.get('/overview', (req, res) => {
         }
         res.end();
     });
-    getOverviewData();
 });
 
 
@@ -65,8 +64,4 @@ async function getOverviewData() {
     var results = await getAllContainer();
     return results;
 
-}
-
-module.exports = {
-    getOverviewData
 }
