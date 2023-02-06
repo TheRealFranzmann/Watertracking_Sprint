@@ -37,6 +37,8 @@ async function createTableRows() {
                     let rowName = document.createElement('td');
                     let rowAmount = document.createElement('td');
                     let rowUnit = document.createElement('td');
+                    let magnifyingGlass = document.createElement('img');
+                    magnifyingGlass.src = 'static/resource/magnifying_glass.png';
 
                     line = containers[i];
                     rowId.innerHTML = line.id;
@@ -46,13 +48,19 @@ async function createTableRows() {
                     rowAmount.innerHTML = line.amount;
                     rowUnit.innerHTML = line.unit;
 
+                    magnifyingGlass.addEventListener('click', function() {
+                        window.location.href = 'detailed_overview.html?id=' + line.id;
+                    });
+                    
                     row.appendChild(rowId);
                     row.appendChild(rowCreationDate);
                     row.appendChild(rowEditDate);
                     row.appendChild(rowName);
                     row.appendChild(rowAmount);
                     row.appendChild(rowUnit);
+                    row.appendChild(magnifyingGlass);
                     table.appendChild(row);
+
                 };
 
             },

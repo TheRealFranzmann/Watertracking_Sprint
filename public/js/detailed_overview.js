@@ -4,16 +4,24 @@ created Bence Gacs
 */
 import { getContainerById } from "./database.js";
 
-
 var urlParams = new URLSearchParams(window.location.search);
 var id = urlParams.get("id");
-const container = getContainerById(id);
 
-document.getElementById("containerName").innerHTML = container.name;
-document.getElementById("creationDate").innerHTML = container.creationDate;
-document.getElementById("editDate").innerHTML = container.editDate;
-document.getElementById("containerCapacity").innerHTML = container.amount;
-document.getElementById("unit").innerHTML = container.unit;
+const rows = await fetch('http://localhost:5000/data%27').then(response => response.json()).then(containers => {
+    for (var i = 0; i <= containers.length - 1; i++) {
+        if (containers[i].id == id) {
+            container = containers[i];
+            document.getElementById("containerName").innerHTML = container.name;
+            document.getElementById("creationDate").innerHTML = container.creationDate;
+            document.getElementById("editDate").innerHTML = container.editDate;
+            document.getElementById("containerCapacity").innerHTML = container.amount;
+            document.getElementById("unit").innerHTML = container.unit;
+        }
+    };
+},
+error => {
+    console.log('ERROR');
+});
 
 // listeners
 backBtn.addEventListener('click', event => {
