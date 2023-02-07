@@ -12,13 +12,6 @@ idInput.name = 'id';
 idInput.value = id;
 const form = document.getElementById('editForm');
 
-document.getElementById("form").addEventListener("submit", function (event) {
-    if (amount.value < 0) {
-      event.preventDefault();
-      alert("Only positive numbers are allowed.");
-    }
-});
-
 
 function fillEditForm() {
     var container = fetch('http://localhost:5000/dataById/' + id)
