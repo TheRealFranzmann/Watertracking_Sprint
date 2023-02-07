@@ -22,9 +22,9 @@ var container = fetch('http://localhost:5000/dataById/' + id)
 
 // listeners
 backBtn.addEventListener('click', event => {
-    window.location.href = 'overview.html';
+    window.location.href = '/overview';
 });
 
 editBtn.addEventListener('click', event => {
-    window.location.href = 'edit.html?id=' + id;
+    window.location.href = '../static/edit_form.html?id=' + id;
 });

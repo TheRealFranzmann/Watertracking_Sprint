@@ -28,16 +28,6 @@ async function createTableRows() {
             containers => {
                 var row = '';
 
-                for (var i = 0; i <= containers.length - 1; i++) {
-                    row = document.createElement('tr');
-                    let rowId = document.createElement('td');
-                    let rowCreationDate = document.createElement('td');
-                    let rowEditDate = document.createElement('td');
-                    let rowName = document.createElement('td');
-                    let rowAmount = document.createElement('td');
-                    let rowUnit = document.createElement('td');
-                    let magnifyingGlass = document.createElement('img');
-                    magnifyingGlass.src = 'static/resource/magnifying_glass.png';
                 for (var index = 0; index <= containers.length - 1; index++) {
                     
                     (function (i) {
@@ -50,6 +40,11 @@ async function createTableRows() {
                     editLine.href = '../static/edit_form.html?id=' + line.id;
                     let editPen = document.createElement('img');
                     editPen.src = '../static/resource/edit_icon.png';
+
+                    let detailLine = document.createElement('a');
+                    detailLine.href = '../static/detailed_overview.html?id=' + line.id;
+                    let magnifyingGlass = document.createElement('img');
+                    magnifyingGlass.src = 'static/resource/magnifying_glass.png';
 
 
                         let deleteButton = document.createElement('img');
@@ -70,8 +65,10 @@ async function createTableRows() {
                         row.appendChild(rowUnit);
                         row.appendChild(deleteButton);
                         row.appendChild(editLine);
-                    editLine.appendChild(editPen);
-                    table.appendChild(row);
+                        row.appendChild(detailLine);
+                        editLine.appendChild(editPen);
+                        detailLine.appendChild(magnifyingGlass);
+                        table.appendChild(row);
                     })(index);
                 };
 
