@@ -104,8 +104,6 @@ function initDummyData() {
     });
 }
 
-initDummyData();
-
 module.exports = {
     initDummyData,
     getAllContainer,
