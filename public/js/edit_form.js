@@ -33,8 +33,4 @@ cancel.addEventListener('click', e => {
     window.location.href = '/overview';
 });
 
-submit.addEventListener('click', e => {
-    
-});
-
 fillEditForm();
