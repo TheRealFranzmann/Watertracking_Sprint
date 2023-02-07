@@ -13,10 +13,23 @@ console.log('connected to watertracking');
 
 connection.query(
     'CREATE TABLE IF NOT EXISTS container (id INT NOT NULL AUTO_INCREMENT , creationDate DATE NOT NULL , editDate DATE NOT NULL , name VARCHAR(255) NOT NULL , amount INT NOT NULL , unit VARCHAR(255) NOT NULL , PRIMARY KEY(id))',
-    function(err, results, fields) {
+    function (err, results, fields) {
         console.log(results);
     }
 );
+
+function remove(id) {
+    return new Promise((resolve, reject) => {
+        const query = 'DELETE FROM `container` WHERE id = ?;';
+        connection.query(query, [id], (error, results) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(results[0]);
+            }
+        });
+    });
+}
 
 function getAllContainer() {
     return new Promise((resolve, reject) => {
@@ -26,6 +39,7 @@ function getAllContainer() {
                 console.log(error);
                 reject(error);
             } else {
+                if (results.length < 1) initDummyData();
                 resolve(results);
             }
         });
@@ -47,7 +61,7 @@ function getContainerById(id) {
 
 function insertContainer(container) {
     return new Promise((resolve, reject) => {
-        const query = 'INSERT INTO liquid (creationDate, editDate, name, amount, unit) VALUES (?, ?, ?, ?, ?)';
+        const query = 'INSERT INTO `container` (creationDate, editDate, name, amount, unit) VALUES (?, ?, ?, ?, ?)';
         connection.query(query, [new Date(), new Date(), container.name, container.amount, container.unit], (error, results) => {
             if (error) {
                 reject(error);
@@ -74,17 +88,23 @@ function updateContainer(container) {
 }
 
 function initDummyData() {
-    connection.query(
-        'INSERT INTO wassertrinken (creationDate, editDate, name, amount, unit)' +
-        'VALUES' +
-        "('0030-01-01', '0030-01-01', 'glass', 330, 'ml')," +
-        "('0030-01-01', '0030-01-01', 'mug', 250, 'ml')",
-        function(err, results, fields) {
-            console.log(results);
-        }
-    );
+    return new Promise((resolve, reject) => {
+        // INSERT INTO container (creationDate, editDate, name, amount, unit) VALUES ('0030-01-01', '0030-01-01', 'glass', 330, 'ml'), ('0030-01-01', '0030-01-01', 'mug', 250, 'ml');
+        const query = 'INSERT INTO container (creationDate, editDate, name, amount, unit)' +
+            'VALUES' +
+            "('0030-01-01', '0030-01-01', 'glass', 330, 'ml')," +
+            "('0030-01-01', '0030-01-01', 'mug', 250, 'ml');";
+        connection.query(query, (error, results) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(results[0]);
+            }
+        });
+    });
 }
 
+initDummyData();
 
 module.exports = {
     initDummyData,

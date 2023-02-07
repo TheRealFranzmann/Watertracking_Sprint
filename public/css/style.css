@@ -1,5 +1,5 @@
-
 /*table style*/
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -15,12 +15,7 @@ th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
-    color:#126887;
-}
-
-/*overview style*/
-#beveragesList {
-    
+    color: #126887;
 }
 
 .button {
@@ -30,6 +25,7 @@ tr:nth-child(even) {
     color: white;
     text-align: center;
     border-radius: 6px;
+    align-self: last baseline;
 }
 
 #submit {
@@ -62,13 +58,14 @@ tr:nth-child(even) {
     transform: translate(-50%, -50%);
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
+
 /*General page*/
+
 .bodylog {
     background: #ABCDEF;
     font-family: Assistant, sans-serif;
@@ -84,4 +81,17 @@ tr:nth-child(even) {
     border-radius: 8px;
     margin: auto;
     padding: 45px;
+}
+
+#addForm {
+    color: white;
+    background: #126887;
+    margin: auto;
+    padding: 45px;
+    display: inline-block;
+}
+
+#addFormBody {
+    flex-direction: column;
+    align-items: center;
 }
