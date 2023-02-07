@@ -20,6 +20,8 @@ On the nth approach the script checks if it exceeds 7 entries and would so remov
 
 An important task is the parsing between json and the objects. The Array already needs to keep the values "stringyfiy"-state to be able to cast the in a Json and back to objects!
 
+![Water Tracking](./public/resource/WaterTracking.png)
+
 ## <u>Overview</u>
 
 You can get to this page when you click on the overview button on the Watertracking form right under the vessels to select. 
@@ -35,6 +37,8 @@ The Overview Table:
 ## <u>Detailed Overview</u>
 
 In the detailed Overview you can look at one tuple specifficly. There you can also see it's id, creation date and edit date next to the other categories also shown in the generale overview.
+
+@TODO: Add image
 
 ## <u>Add Form</u>
 
@@ -53,6 +57,86 @@ Here you can edit your existing values. You can rename them, give them a differe
 # Code
 
 ## <u> overview.js </u>
+
+This code creates a table that displays the data from an API (fetch('http://localhost:5000/data')) and allows the user to delete and edit the data. The table is made up of several rows, each of which contains data such as the name, amount, and unit of the data. The code also includes two buttons: one to go back to the previous page (backBtn), and another to add new data (addBtn). If the user clikcs the delete button, a popup appears to confirm the deletion. If the user confirms the deletion, the data is deleted by sending a request to the API (fetch(http://localhost:5000/get/${id})).
+
+```javascript
+async function createTableRows() {
+  
+    const rows = await fetch('http://localhost:5000/data')
+        .then(response => response.json())
+        .then(
+            containers => {
+                var row = '';
+
+                for (var i = 0; i <= containers.length - 1; i++) {
+                    row = document.createElement('tr');
+                    let rowId = document.createElement('td');
+                    let rowCreationDate = document.createElement('td');
+                    let rowEditDate = document.createElement('td');
+                    let rowName = document.createElement('td');
+                    let rowAmount = document.createElement('td');
+                    let rowUnit = document.createElement('td');
+                    let magnifyingGlass = document.createElement('img');
+                    magnifyingGlass.src = 'static/resource/magnifying_glass.png';
+                for (var index = 0; index <= containers.length - 1; index++) {
+                    
+                    (function (i) {
+                        line = containers[i];
+                        row = document.createElement('tr');
+                        let rowName = document.createElement('td');
+                        let rowAmount = document.createElement('td');
+                        let rowUnit = document.createElement('td');
+                    let editLine = document.createElement('a');
+                    editLine.href = '../static/edit_form.html?id=' + line.id;
+                    let editPen = document.createElement('img');
+                    editPen.src = '../static/resource/edit_icon.png';
+
+
+                        let deleteButton = document.createElement('img');
+
+                        console.log(line);
+                        rowName.innerHTML = line.name;
+                        rowAmount.innerHTML = line.amount;
+                        rowUnit.innerHTML = line.unit;
+
+                        deleteButton.src = "static/resource/delete.png";
+                        deleteButton.title = "delete";
+                        deleteButton.alt = "delete entry";
+                        deleteButton.onclick = function () { fireDialog((line.id)); };
+
+
+                        row.appendChild(rowName);
+                        row.appendChild(rowAmount);
+                        row.appendChild(rowUnit);
+                        row.appendChild(deleteButton);
+                        row.appendChild(editLine);
+                    editLine.appendChild(editPen);
+                    table.appendChild(row);
+                    })(index);
+                };
+
+                if (containers.length == 0) { } // execute init
+
+            },
+            error => {
+                console.log('ERROR');
+            });
+};
+```
+
+>When the function is called, it makes a fetch request to the specified endpoint. The response is expected to be in JSON format, and is parsed using response.json() method. The parsed data is stored in the containers variable.
+
+A for loop is then used to iterate over each container in the containers array. For each iteration, the following actions are performed:
+* A table row element tr is created and stored in the row variable.
+* Five table data elements td are created (for the name, amount, and unit of the container, and for displaying delete and edit btutons).
+* The inner HTML of each table data element is set to the corresponding values from the container object.
+* A delete button element is created and its source is set to an image of a delete icon. The button also has an onclick function attached that fires a function called fireDialog() and passes the id of the current container as an argument.
+* An edit button element is created and its source is set to a URL pointing to an edit form page. The edit button also has an edit icon image img as a child element.
+* The newly created table data elements and buttons are appended to the table row tr.
+* Finally, the table row tr is appended to the table element on the web page.
+
+<br>
 
 ## <u> detailed_overview.js </u>
 
@@ -79,6 +163,10 @@ var container = fetch('http://localhost:5000/dataById/' + id)
 
 ## <u> addForm.js </u>
 
+@TODO needed?
+
+<br>
+
 ## <u>edit_form.js </u>
 This code is for an HTML form used to edit data for a specific container. The form has fields for the container's name, amount, and unit. The code retrieves the id of the container to be edited from the URL parameters, makes a fetch request to http://localhost:5000/dataById/ + the id to retrieve the data for that container, then populates the form fields with the data. There is an event listener added to the "cancel" button that navigates back to the "overview" page when clicked. There is also an event listener added to the "submit" button, but it does not have any functionality yet. The fillEditForm function is called at the end of the code to populate the form fields with data.
 
@@ -103,3 +191,13 @@ function fillEditForm() {
 <br>
 
 # Challenges
+
+## <u> Fetching data from the server </u>
+@TODO Harald/Benjamin - add description 
+
+## <u> Creating a table with dynamic data </u>
+@TODO Kathrin/Franz - add descriiption
+
+## <u> Working in a team </u>
+@TODO all - add description
+
