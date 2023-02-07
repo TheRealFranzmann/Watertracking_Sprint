@@ -163,10 +163,72 @@ var container = fetch('http://localhost:5000/dataById/' + id)
 
 ## <u> addForm.js </u>
 
-@TODO needed?
+In this class I just declaired the backButton because the rest is done by the form und the right routes.
 
+``` javascript
+// variables
+const backBtn = document.getElementById('backBtn');
+
+// listener
+
+backBtn.addEventListener('click', event => {
+    window.location.href = '/overview';
+});
+```
+## <u> container.js </u>
+
+This code is used to read the addForm.html and parse it to the route /addForm so the user can actually see whats going on on this form.
+
+``` javascript
+router.get('/addForm', function(req, res) {
+    fs.readFile('./public/addForm.html', null, function(error, page) {
+        if (error) {
+            res.writeHead(404);
+            res.write('Page not found!')
+        } else {
+            res.write(page);
+        }
+        res.end();
+    });
+});
+```
+
+With this code I have a route that collects all the data from the database.
+
+``` javascript
+router.get('/data', function(req, res) {
+    var results = model.getAllContainer().then(
+        containers => {
+            res.send(containers);
+        },
+        error => {
+            console.log('ERROR');
+        }
+    )
+});
+```
 <br>
 
+With the next code snippet will be a route defined to save the incoming data into the database based on the query from the database.js file. Also after saving, the user will be redirected into the /overview view.
+
+``` javascript
+router.post('/save', function(req, res) {
+    const form = new formidable.IncomingForm();
+    form.parse(req, (err, beverage, files) => {
+        console.log(beverage);
+        model.save(beverage).then(
+            beverage => {
+                res.writeHead(302, {
+                    location: '/overview',
+                    'content-type': 'text/plain'
+                });
+                res.end('302 Redirecting to /overview');
+            },
+            error => res.send(error)
+        );
+    });
+});
+```
 ## <u>edit_form.js </u>
 This code is for an HTML form used to edit data for a specific container. The form has fields for the container's name, amount, and unit. The code retrieves the id of the container to be edited from the URL parameters, makes a fetch request to http://localhost:5000/dataById/ + the id to retrieve the data for that container, then populates the form fields with the data. There is an event listener added to the "cancel" button that navigates back to the "overview" page when clicked. There is also an event listener added to the "submit" button, but it does not have any functionality yet. The fillEditForm function is called at the end of the code to populate the form fields with data.
 
@@ -189,15 +251,4 @@ function fillEditForm() {
 ```
 
 <br>
-
-# Challenges
-
-## <u> Fetching data from the server </u>
-@TODO Harald/Benjamin - add description 
-
-## <u> Creating a table with dynamic data </u>
-@TODO Kathrin/Franz - add descriiption
-
-## <u> Working in a team </u>
-@TODO all - add description
 
