@@ -27,6 +27,17 @@ async function createTableRows() {
         .then(
             containers => {
                 var row = '';
+
+                for (var i = 0; i <= containers.length - 1; i++) {
+                    row = document.createElement('tr');
+                    let rowId = document.createElement('td');
+                    let rowCreationDate = document.createElement('td');
+                    let rowEditDate = document.createElement('td');
+                    let rowName = document.createElement('td');
+                    let rowAmount = document.createElement('td');
+                    let rowUnit = document.createElement('td');
+                    let magnifyingGlass = document.createElement('img');
+                    magnifyingGlass.src = 'static/resource/magnifying_glass.png';
                 for (var index = 0; index <= containers.length - 1; index++) {
                     
                     (function (i) {
