@@ -1,10 +1,14 @@
-# *Watertracking* - Vessel overview
+# *Watertracking* - Vessel overview (version 2022)
 
-# Necessary configurations
+# Installation
 
-A database with the name 'watertracking' needs to be created and the root needs to have access!
+A database with the name 'watertracking' needs to be created and the root needs to have access!\
+'npm install' to be executed in project directory
 
-Please also have some Dummy data for starters or add some through the add button.
+Tools:
+- mySQL database
+- working version of node.js (v18.12.1 or later)
+- working version of 'node package manager' (9.2.0 or later)
 
 <br>
 
@@ -33,6 +37,13 @@ Here you can see all the vessels that you can choose from with their name, the a
 The Overview Table:
 
 ![Overview Table](./public/resource/OverviewTable.png)
+
+## Delete feature
+
+In case of deleting an Entry, there is a red bin to delete a row.\
+The function deletes the entry in the Database and reloads the cleaned table.\
+As 'double check' feature the system needs a confirmation from the user to proceed with the operation.\
+For further development and testing there is constantly 0<values in the database\.
 
 ## <u>Detailed Overview</u>
 
