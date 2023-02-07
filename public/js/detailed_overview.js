@@ -7,7 +7,7 @@ import { getContainerById } from "./database.js";
 var urlParams = new URLSearchParams(window.location.search);
 var id = urlParams.get("id");
 
-const rows = await fetch('http://localhost:5000/data%27').then(response => response.json()).then(containers => {
+const rows = await fetch('http://localhost:5000/data').then(response => response.json()).then(containers => {
     for (var i = 0; i <= containers.length - 1; i++) {
         if (containers[i].id == id) {
             container = containers[i];
